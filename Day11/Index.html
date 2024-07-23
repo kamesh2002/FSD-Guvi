@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Survey Form</h1>
+        <form action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label>Your Experience (1 to 5 stars):</label>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5" required>
+                <label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="rating" value="4" required>
+                <label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="rating" value="3" required>
+                <label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="rating" value="2" required>
+                <label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="rating" value="1" required>
+                <label for="star1" title="1 star">★</label>
+            </div>
+
+            <div class="section">
+                <label for="purchase">Purchase Satisfaction:</label>
+                <div class="checkbox-group" id="purchase">
+                    <input type="radio" id="purchase-very-satisfied" name="purchase" value="Very Satisfied" required>
+                    <label for="purchase-very-satisfied">Very Satisfied</label><br>
+                    <input type="radio" id="purchase-satisfied" name="purchase" value="Satisfied" required>
+                    <label for="purchase-satisfied">Satisfied</label><br>
+                    <input type="radio" id="purchase-disappointed" name="purchase" value="Disappointed" required>
+                    <label for="purchase-disappointed">Disappointed</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="services">Services Satisfaction:</label>
+                <div class="checkbox-group" id="services">
+                    <input type="radio" id="services-very-satisfied" name="services" value="Very Satisfied" required>
+                    <label for="services-very-satisfied">Very Satisfied</label><br>
+                    <input type="radio" id="services-satisfied" name="services" value="Satisfied" required>
+                    <label for="services-satisfied">Satisfied</label><br>
+                    <input type="radio" id="services-disappointed" name="services" value="Disappointed" required>
+                    <label for="services-disappointed">Disappointed</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="buy-again">How likely are you to buy from us again?</label>
+                <div class="checkbox-group" id="buy-again">
+                    <input type="radio" id="very-likely" name="buy-again" value="Very Likely" required>
+                    <label for="very-likely">Very Likely</label><br>
+                    <input type="radio" id="likely" name="buy-again" value="Likely" required>
+                    <label for="likely">Likely</label><br>
+                    <input type="radio" id="neutral" name="buy-again" value="Neutral" required>
+                    <label for="neutral">Neutral</label><br>
+                    <input type="radio" id="unlikely" name="buy-again" value="Unlikely" required>
+                    <label for="unlikely">Unlikely</label><br>
+                    <input type="radio" id="very-unlikely" name="buy-again" value="Very Unlikely" required>
+                    <label for="very-unlikely">Very Unlikely</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="recommend-product">Would you recommend our product to others?</label>
+                <div class="checkbox-group" id="recommend-product">
+                    <input type="radio" id="recommend-product-yes" name="recommend-product" value="Yes" required>
+                    <label for="recommend-product-yes">Yes</label><br>
+                    <input type="radio" id="recommend-product-no" name="recommend-product" value="No" required>
+                    <label for="recommend-product-no">No</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="recommend-company">Would you recommend our company to others?</label>
+                <div class="checkbox-group" id="recommend-company">
+                    <input type="radio" id="recommend-company-yes" name="recommend-company" value="Yes" required>
+                    <label for="recommend-company-yes">Yes</label><br>
+                    <input type="radio" id="recommend-company-no" name="recommend-company" value="No" required>
+                    <label for="recommend-company-no">No</label>
+                </div>
+            </div>
+
+            <label for="comments">Additional Comments:</label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
