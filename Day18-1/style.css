@@ -1,0 +1,26 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #343a40;
+}
+
+#fetchFactsBtn {
+    display: block;
+    margin: 0 auto;
+}
+
+#factsList {
+    max-width: 600px;
+    margin: 0 auto;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.list-group-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    margin-bottom: 5px;
+}
