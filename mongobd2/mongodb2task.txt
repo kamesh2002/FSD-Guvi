@@ -1,0 +1,135 @@
+Create users collection
+
+db.createCollection("users")
+db.createCollection("codekata")
+db.createCollection("attendance")
+db.createCollection("topics")
+db.createCollection("tasks")
+db.createCollection("company_drives")
+db.createCollection("mentors")
+
+
+
+
+ Insert Sample Data
+
+db.users.insertMany([
+  { _id: 1, name: "John Doe", email: "john@example.com", mentee_count: 5 },
+  { _id: 2, name: "Jane Doe", email: "jane@example.com", mentee_count: 18 }
+]);
+
+
+Insert into codekata
+
+db.codekata.insertMany([
+  { _id: 1, user_id: 1, problems_solved: 50 },
+  { _id: 2, user_id: 2, problems_solved: 80 }
+]);
+
+
+
+Insert into attendance
+
+
+db.attendance.insertMany([
+  { _id: 1, user_id: 1, date: ISODate("2020-10-20"), status: "present" },
+  { _id: 2, user_id: 2, date: ISODate("2020-10-21"), status: "absent" }
+]);
+
+
+		
+Insert into topics
+
+db.topics.insertMany([
+  { _id: 1, name: "JavaScript Basics", date: ISODate("2020-10-10") },
+  { _id: 2, name: "React Components", date: ISODate("2020-10-15") }
+]);
+
+
+Insert tasks
+db.tasks.insertMany([
+  { _id: 1, name: "React Project", date: ISODate("2020-10-20"), status: "submitted" },
+  { _id: 2, name: "Node.js Task", date: ISODate("2020-10-25"), status: "not submitted" }
+]);
+
+
+
+insert drives
+
+db.company_drives.insertMany([
+  { _id: 1, company_name: "Google", date: ISODate("2020-10-20"), students_appeared: [1, 2] },
+  { _id: 2, company_name: "Amazon", date: ISODate("2020-10-30"), students_appeared: [2] }
+]);
+
+
+Insert mentors
+db.mentors.insertMany([
+  { _id: 1, name: "Jane Smith", mentees: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] },
+  { _id: 2, name: "Mike Johnson", mentees: [1, 2, 3] }
+]);
+
+
+
+
+
+
+
+
+
+
+Query 1: Find all topics and tasks taught in October
+db.topics.find({ 
+  date: { $gte: ISODate("2020-10-01"), $lte: ISODate("2020-10-31") } 
+});
+
+db.tasks.find({ 
+  date: { $gte: ISODate("2020-10-01"), $lte: ISODate("2020-10-31") } 
+});
+
+Query 2: Find all company drives between 15-Oct-2020 and 31-Oct-2020
+db.company_drives.find({
+  date: { $gte: ISODate("2020-10-15"), $lte: ISODate("2020-10-31") }
+});
+
+
+
+Query 3: Find all company drives and students who appeared for placement
+db.company_drives.aggregate([
+  {
+    $project: {
+      company_name: 1,
+      students_appeared: 1
+    }
+  }
+]);
+
+
+Query 4: Find the number of problems solved by the user in Codekata
+db.codekata.find({}, { user_id: 1, problems_solved: 1 });
+
+
+
+Query 5: Find all mentors with mentees count > 15
+db.mentors.find({
+  $expr: { $gt: [{ $size: "$mentees" }, 15] }
+});
+
+
+
+
+6.Find users absent and tasks not submitted between 15-Oct-2020 and 31-Oct-2020
+const absentUsers = db.attendance.find({
+  date: { $gte: ISODate("2020-10-15"), $lte: ISODate("2020-10-31") },
+  status: "absent"
+}).toArray().map(doc => doc.user_id);
+
+print("Absent Users:", absentUsers);
+
+db.tasks.find({
+  user_id: { $in: absentUsers }
+}).pretty();
+
+
+
+
+
